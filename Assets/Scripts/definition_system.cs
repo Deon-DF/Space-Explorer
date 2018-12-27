@@ -1,0 +1,51 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+
+public class Star_system
+{
+    public string name;
+    public float coordinate_x = 0f;
+    public float coordinate_y = 0f;
+    public List<Star> stars = new List<Star>();
+    public List<Planetoid> planets = new List<Planetoid>(); 
+}
+
+public class Star
+{
+    public string name;
+    public enum Star_Class { O, B, A, F, G, K, M }
+    public Star_Class star_class = Star_Class.M;
+
+    public string description
+    {
+        get
+        {
+            switch (star_class)
+            {
+                case Star_Class.O:
+                    return "O-type stars are extremely luminous and extremely hot blue stars.";
+                case Star_Class.B:
+                    return "B-type stars are very luminous and hot blue stars.";
+                case Star_Class.A:
+                    return "A-type stars are host bluish-white or white stars.";
+                case Star_Class.F:
+                    return "F-type stars white bright stars.";
+                case Star_Class.G:
+                    return "G-type stars are yellow stars with mediocre surface temperature.";
+                case Star_Class.K:
+                    return "K-type stars are orange stars.";
+                case Star_Class.M:
+                    return "Class M stars are red in color and less hot than other star types.";
+                default:
+                    return "";
+            }
+        }
+    }
+}
+
+public class Planetoid
+{
+    public string name;
+    public enum Planet_Class { molten, barren, frozen, gas, biosphere, asteroid_belt }
+
+}

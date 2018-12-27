@@ -15,10 +15,10 @@ public class Ship
             case Hull.scout:
                 name = "Scout";
                 Hull_Section scout_hull_section1 = new Hull_Section();
-                scout_hull_section1.subsystems[0] = Hull_Section.Subsystem.bridge;
-                scout_hull_section1.subsystems[1] = Hull_Section.Subsystem.life_support;
-                scout_hull_section1.subsystems[2] = Hull_Section.Subsystem.living_space;
-                scout_hull_section1.subsystems[3] = Hull_Section.Subsystem.reactor;
+                scout_hull_section1.subsystems[0] = new Subsystem (Subsystem.Type.bridge);
+                scout_hull_section1.subsystems[1] = new Subsystem (Subsystem.Type.life_support);;
+                scout_hull_section1.subsystems[2] = new Subsystem (Subsystem.Type.living_space);;
+                scout_hull_section1.subsystems[3] = new Subsystem (Subsystem.Type.reactor);;
 
                 hull_sections = new List<Hull_Section>();
                 hull_sections.Add(scout_hull_section1);
@@ -28,14 +28,14 @@ public class Ship
                 name = "Courier";
                 Hull_Section courier_hull_section1 = new Hull_Section();
                 Hull_Section courier_hull_section2 = new Hull_Section();
-                courier_hull_section1.subsystems[0] = Hull_Section.Subsystem.bridge;
-                courier_hull_section1.subsystems[1] = Hull_Section.Subsystem.life_support;
-                courier_hull_section1.subsystems[2] = Hull_Section.Subsystem.living_space;
-                courier_hull_section1.subsystems[3] = Hull_Section.Subsystem.reactor;
-                courier_hull_section2.subsystems[0] = Hull_Section.Subsystem.storage;
-                courier_hull_section2.subsystems[1] = Hull_Section.Subsystem.storage;
-                courier_hull_section2.subsystems[2] = Hull_Section.Subsystem.storage;
-                courier_hull_section2.subsystems[3] = Hull_Section.Subsystem.storage;
+                courier_hull_section1.subsystems[0] = new Subsystem (Subsystem.Type.bridge);;
+                courier_hull_section1.subsystems[1] = new Subsystem (Subsystem.Type.life_support);;
+                courier_hull_section1.subsystems[2] = new Subsystem (Subsystem.Type.living_space);;
+                courier_hull_section1.subsystems[3] = new Subsystem (Subsystem.Type.reactor);;
+                courier_hull_section2.subsystems[0] = new Subsystem (Subsystem.Type.storage);;
+                courier_hull_section2.subsystems[1] = new Subsystem (Subsystem.Type.storage);;
+                courier_hull_section2.subsystems[2] = new Subsystem (Subsystem.Type.storage);;
+                courier_hull_section2.subsystems[3] = new Subsystem (Subsystem.Type.storage);;
 
                 hull_sections = new List<Hull_Section>();
                 hull_sections.Add(courier_hull_section1);
@@ -45,10 +45,10 @@ public class Ship
             case Hull.fighter:
                 name = "Fighter";
                 Hull_Section fighter_hull_section1 = new Hull_Section();
-                fighter_hull_section1.subsystems[0] = Hull_Section.Subsystem.bridge;
-                fighter_hull_section1.subsystems[1] = Hull_Section.Subsystem.life_support;
-                fighter_hull_section1.subsystems[2] = Hull_Section.Subsystem.living_space;
-                fighter_hull_section1.subsystems[3] = Hull_Section.Subsystem.reactor;
+                fighter_hull_section1.subsystems[0] = new Subsystem (Subsystem.Type.bridge);;
+                fighter_hull_section1.subsystems[1] = new Subsystem (Subsystem.Type.life_support);;
+                fighter_hull_section1.subsystems[2] = new Subsystem (Subsystem.Type.living_space);;
+                fighter_hull_section1.subsystems[3] = new Subsystem (Subsystem.Type.reactor);;
 
                 hull_sections = new List<Hull_Section>();
                 hull_sections.Add(fighter_hull_section1);
@@ -58,14 +58,14 @@ public class Ship
                 name = "Explorer";
                 Hull_Section explorer_hull_section1 = new Hull_Section();
                 Hull_Section explorer_hull_section2 = new Hull_Section();
-                explorer_hull_section1.subsystems[0] = Hull_Section.Subsystem.bridge;
-                explorer_hull_section1.subsystems[1] = Hull_Section.Subsystem.life_support;
-                explorer_hull_section1.subsystems[2] = Hull_Section.Subsystem.living_space;
-                explorer_hull_section1.subsystems[3] = Hull_Section.Subsystem.living_space;
-                explorer_hull_section2.subsystems[0] = Hull_Section.Subsystem.reactor;
-                explorer_hull_section2.subsystems[1] = Hull_Section.Subsystem.lab;
-                explorer_hull_section2.subsystems[2] = Hull_Section.Subsystem.storage;
-                explorer_hull_section2.subsystems[3] = Hull_Section.Subsystem.storage;
+                explorer_hull_section1.subsystems[0] = new Subsystem (Subsystem.Type.bridge);;
+                explorer_hull_section1.subsystems[1] = new Subsystem (Subsystem.Type.life_support);;
+                explorer_hull_section1.subsystems[2] = new Subsystem (Subsystem.Type.living_space);;
+                explorer_hull_section1.subsystems[3] = new Subsystem (Subsystem.Type.living_space);;
+                explorer_hull_section2.subsystems[0] = new Subsystem (Subsystem.Type.reactor);;
+                explorer_hull_section2.subsystems[1] = new Subsystem(Subsystem.Type.lab);
+                explorer_hull_section2.subsystems[2] = new Subsystem (Subsystem.Type.storage);;
+                explorer_hull_section2.subsystems[3] = new Subsystem (Subsystem.Type.storage);;
 
                 hull_sections = new List<Hull_Section>();
                 hull_sections.Add(explorer_hull_section1);
@@ -80,8 +80,56 @@ public class Ship
 }
 
 
+public class Subsystem
+{
+    public string name = "Empty subsystem";
+    public string description = "";
+    public enum Type { bridge, lab, life_support, living_space, reactor, storage }
+    public Type type = Type.storage;
+
+    public Subsystem (Subsystem.Type type)
+    {
+        switch (type)
+        {
+            case Type.bridge:
+                name = "Bridge";
+                type = Type.bridge;
+                break;
+
+            case Type.lab:
+                name = "Lab";
+                type = Type.lab;
+                break;
+
+            case Type.life_support:
+                name = "Life support";
+                type = Type.life_support;
+                break;
+
+            case Type.living_space:
+                name = "Living space";
+                type = Type.living_space;
+                break;
+
+            case Type.reactor:
+                name = "Reactor";
+                type = Type.reactor;
+                break;
+
+            case Type.storage:
+                name = "Storage [----]";
+                type = Type.storage;
+                break;
+
+            default:
+                name = "Storage [----]";
+                type = Type.storage;
+                break;
+        }
+    }
+}
+
 public class Hull_Section
 {
-    public enum Subsystem { bridge, lab, life_support, living_space, reactor, storage }
     public Subsystem[] subsystems = new Subsystem[4];
 }
