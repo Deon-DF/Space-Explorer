@@ -20,6 +20,15 @@ TextureImporter:
   - first:
       213: 5084493093215254449
     second: Saturn
+  - first:
+      213: 7555098754326436998
+    second: Uranus
+  - first:
+      213: 3937788397175801233
+    second: Neptune
+  - first:
+      213: -7345381036925465315
+    second: Pluto
   externalObjects: {}
   serializedVersion: 8
   mipmaps:
@@ -245,6 +254,69 @@ TextureImporter:
       bones: []
       spriteID: 50da75b6d8b0f254ba85223ba737b42d
       internalID: 5084493093215254449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Uranus
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 90
+        width: 95
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2023bde6dac14b541b9f640d7b253340
+      internalID: 7555098754326436998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neptune
+      rect:
+        serializedVersion: 2
+        x: 554
+        y: 98
+        width: 110
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33f3c7fb9b9467d4fa409c15f8c59078
+      internalID: 3937788397175801233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pluto
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 103
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8a0d6068409903489c9f54d10b27a1b
+      internalID: -7345381036925465315
       vertices: []
       indices: 
       edges: []

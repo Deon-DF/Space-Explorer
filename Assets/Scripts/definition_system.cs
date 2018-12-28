@@ -7,7 +7,7 @@ public class Star_system
     public float coordinate_x = 0f;
     public float coordinate_y = 0f;
     public List<Star> stars = new List<Star>();
-    public List<Planetoid> planets = new List<Planetoid>(); 
+    public List<Planetoid> planets = new List<Planetoid>();
 }
 
 public class Star
@@ -46,6 +46,19 @@ public class Star
 public class Planetoid
 {
     public string name;
-    public enum Planet_Class { molten, barren, frozen, gas, biosphere, asteroid_belt }
+    public enum Planet_Class { planet, asteroid_belt }
+    public Planet_Class planet_class = Planet_Class.planet;
+
+    public float orbit = 1f;
+    public float surface_temperature_min = 184;
+    public float surface_temperature_mean = 288;
+    public float surface_temperature_max = 330;
+    public float atmosphere_pressure = 101f;
+    public float radius = 1f;
+    public float mass = 1f;
+    public float gravity = 1f;
+
+    public enum Atmosphere { none, carbon_dioxide, hydrogen, helium, nitrogen, nitrogen_oxygen, methane, sulfur_dioxide }
+    public Atmosphere atmosphere = Atmosphere.none;
 
 }
