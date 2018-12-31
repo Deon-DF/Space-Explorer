@@ -64,36 +64,43 @@ public class game_gui : MonoBehaviour
         system_name_text.text = star_system.name;
         system_description_text.text = star_system.stars[0].description;
     }
+     
+    public string generate_system_planet_description(Planetoid planet)
+    {
+        string temp = "";
+
+        if (planet.planet_class == Planetoid.Planet_Class.silicate)
+        {
+            temp += "Orbit: " + planet.orbit + " AU\n";
+            temp += translate_planet_size(planet.planet_size) + "\n";
+            temp += translate_planet_class(planet.planet_class) + "\n";
+            temp += translate_planet_gravity(planet.planet_gravity) + "\n";
+            temp += translate_planet_temperature(planet.planet_temperature) + "\n";
+            temp += planet.planet_surface + "\n";
+            temp += planet.planet_atmosphere + "\n";
+            temp += planet.planet_atmos_pressure + "\n";
+        }
+        else
+        {
+            temp += "Orbit: " + planet.orbit + " AU\n";
+        }
+
+        return temp;
+    }
 
     public string generate_planet_description(Planetoid planet)
     {
         string temp = "";
 
-        if (planet.planet_class == Planetoid.Planet_Class.planet || planet.planet_class == Planetoid.Planet_Class.gas_giant)
+        if (planet.planet_class == Planetoid.Planet_Class.silicate)
         {
             temp += "Orbit: " + planet.orbit + " AU\n";
-            temp += "Radius: " + planet.radius + " E\n";
-            temp += "Mass: " + planet.mass + " E\n";
-            temp += "Gravity: " + planet.gravity + " g\n\n";
-
-            if (game_controller.id.temperature_scale == game_controller.Temperature_scale.Kelvin)
-            {
-                temp += "T min: " + planet.surface_temperature_min + " K\n";
-                temp += "T mean: " + planet.surface_temperature_mean + " K\n";
-                temp += "T max: " + planet.surface_temperature_max + " K";
-            }
-            else if (game_controller.id.temperature_scale == game_controller.Temperature_scale.Celsius)
-            {
-                temp += "T min: " + (planet.surface_temperature_min - 273) + " C\n";
-                temp += "T mean: " + (planet.surface_temperature_mean - 273) + " C\n";
-                temp += "T max: " + (planet.surface_temperature_max - 273) + " C";
-            }
-            else
-            {
-                temp += "T min: " + (planet.surface_temperature_min * 9 / 5 - 460) + " F\n";
-                temp += "T mean: " + (planet.surface_temperature_mean * 9 / 5 - 460) + " F\n";
-                temp += "T max: " + (planet.surface_temperature_max * 9 / 5 - 460) + " F";
-            }
+            temp += "Size: " + planet.planet_size + "\n";
+            temp += "Gravity: " + planet.planet_gravity + "\n";
+            temp += "Surface: " + planet.planet_surface + "\n";
+            temp += "Atmosphere: " + planet.planet_atmosphere + "\n";
+            temp += "A. Pressure: " + planet.planet_atmos_pressure + "\n";
+            temp += "Temp: " + planet.planet_temperature + "\n";
         }
         else
         {
@@ -119,7 +126,7 @@ public class game_gui : MonoBehaviour
                 go_planets[i].SetActive(true);
                 go_planet_names[i].GetComponent<Text>().text = starsystem.planets[i].name;
                 go_planet_sprites[i].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite> (starsystem.planets[i].sprite_path);
-                go_planet_stats[i].GetComponent<Text>().text = game_gui.id.generate_planet_description(starsystem.planets[i]);
+                go_planet_stats[i].GetComponent<Text>().text = game_gui.id.generate_system_planet_description(starsystem.planets[i]);
             }
             else
             {
@@ -130,6 +137,171 @@ public class game_gui : MonoBehaviour
         }
 
     }
+    #endregion
+
+    #region Enum values to string
+
+    string translate_planet_size (Planetoid.Planet_Size planet_size)
+    {
+        string output = "";
+
+        switch (planet_size)
+        {
+
+            case Planetoid.Planet_Size.mesoplanet:
+                output = "Mesoplanet";
+                break;
+
+            case Planetoid.Planet_Size.sub_planet:
+                output = "Sub-Planet";
+                break;
+
+            case Planetoid.Planet_Size.planet:
+                output = "Planet";
+                break;
+
+            case Planetoid.Planet_Size.super_planet:
+                output = "Super-Planet";
+                break;
+
+            case Planetoid.Planet_Size.mini_giant:
+                output = "Mini-Giant";
+                break;
+
+            case Planetoid.Planet_Size.giant:
+                output = "Giant";
+                break;
+
+            case Planetoid.Planet_Size.super_giant:
+                output = "Super-Giant";
+                break;
+                
+            case Planetoid.Planet_Size.sparce_belt:
+                output = "Sparce";
+                break;
+
+            case Planetoid.Planet_Size.normal_belt:
+                output = "Normal";
+                break;
+
+            case Planetoid.Planet_Size.dense_belt:
+                output = "Dense";
+                break;
+
+            default:
+                output = "default size";
+                break;
+        }
+
+        return output;
+    }
+
+    string translate_planet_class(Planetoid.Planet_Class planet_class)
+    {
+        string output = "";
+
+        switch (planet_class)
+        {
+            case Planetoid.Planet_Class.silicate:
+                output = "Silicate";
+                break;
+
+            case Planetoid.Planet_Class.gas_giant:
+                output = "Gas Giant";
+                break;
+
+            default:
+                output = "default planet";
+                break;
+        }
+
+        return output;
+    }
+
+    string translate_planet_gravity(Planetoid.Planet_Gravity planet_gravity)
+    {
+        string output = "";
+
+        switch (planet_gravity)
+        {
+            case Planetoid.Planet_Gravity.none:
+                output = "No Gravity";
+                break;
+
+            case Planetoid.Planet_Gravity.very_low:
+                output = "V.Low Gravity";
+                break;
+
+            case Planetoid.Planet_Gravity.low:
+                output = "Low Gravity";
+                break;
+
+            case Planetoid.Planet_Gravity.average:
+                output = "Avg. Gravity";
+                break;
+
+            case Planetoid.Planet_Gravity.high:
+                output = "High Gravity";
+                break;
+
+            case Planetoid.Planet_Gravity.very_high:
+                output = "V.High Gravity";
+                break;
+
+            case Planetoid.Planet_Gravity.enormous:
+                output = "Enorm. Gravity";
+                break;
+
+            default:
+                output = "default gravity";
+                break;
+        }
+
+        return output;
+    }
+
+    string translate_planet_temperature(Planetoid.Planet_Temperature planet_temperature)
+    {
+        string output = "";
+
+        switch (planet_temperature)
+        {
+            case Planetoid.Planet_Temperature.frozen:
+                output = "Frozen";
+                break;
+
+            case Planetoid.Planet_Temperature.very_cold:
+                output = "V.Cold";
+                break;
+
+            case Planetoid.Planet_Temperature.cold:
+                output = "Cold";
+                break;
+
+            case Planetoid.Planet_Temperature.average:
+                output = "Temperate";
+                break;
+
+            case Planetoid.Planet_Temperature.hot:
+                output = "Hot";
+                break;
+
+            case Planetoid.Planet_Temperature.very_hot:
+                output = "V.Hot";
+                break;
+
+            case Planetoid.Planet_Temperature.scorching:
+                output = "Scorching";
+                break;
+
+            default:
+                output = "default temperature";
+                break;
+        }
+
+        return output;
+    }
+
     #endregion
 
     #region Buttons

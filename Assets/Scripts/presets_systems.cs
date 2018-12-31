@@ -20,8 +20,16 @@ public static class presets_systems
         // Generate planets
         Planetoid mercury = new Planetoid();
         mercury.name = "Mercury";
-        mercury.planet_class = Planetoid.Planet_Class.planet;
+        mercury.planet_size = Planetoid.Planet_Size.sub_planet;
+        mercury.planet_class = Planetoid.Planet_Class.silicate;
+        mercury.planet_temperature = Planetoid.Planet_Temperature.scorching;
+        mercury.planet_surface = Planetoid.Planet_Surface.barren;
+        mercury.planet_atmosphere = Planetoid.Planet_Atmosphere.none;
+        mercury.planet_atmos_pressure = Planetoid.Planet_Atmos_Pressure.none;
+        mercury.planet_gravity = Planetoid.Planet_Gravity.very_low;
+        mercury.sprite_path = "GFX/Space/Planets/Preset/mercury";
         mercury.orbit = 0.4f;
+
         mercury.radius = 0.38f;
         mercury.mass = 0.06f;
         mercury.gravity = 0.38f;
@@ -33,8 +41,19 @@ public static class presets_systems
 
         Planetoid venus = new Planetoid();
         venus.name = "Venus";
-        venus.planet_class = Planetoid.Planet_Class.planet;
+        venus.planet_size = Planetoid.Planet_Size.planet;
+        venus.planet_class = Planetoid.Planet_Class.silicate;
+        venus.planet_gravity = Planetoid.Planet_Gravity.average;
+        venus.planet_temperature = Planetoid.Planet_Temperature.very_hot;
+        venus.planet_surface = Planetoid.Planet_Surface.barren;
+        venus.planet_atmosphere = Planetoid.Planet_Atmosphere.carbon_dioxide;
+        venus.planet_atmos_pressure = Planetoid.Planet_Atmos_Pressure.extreme;
+
+        venus.planet_features.Add(Planetoid.Planet_Feature.greenhouse_effect);
+
+        venus.sprite_path = "GFX/Space/Planets/Preset/venus";
         venus.orbit = 0.7f;
+
         venus.radius = 0.95f;
         venus.mass = 0.8f;
         venus.gravity = 0.9f;
@@ -46,12 +65,18 @@ public static class presets_systems
 
         Planetoid earth = new Planetoid();
         earth.name = "Earth";
-        earth.planet_class = Planetoid.Planet_Class.planet;
+        earth.planet_size = Planetoid.Planet_Size.planet;
+        earth.planet_class = Planetoid.Planet_Class.silicate;
+        earth.planet_temperature = Planetoid.Planet_Temperature.average;
+        earth.planet_gravity = Planetoid.Planet_Gravity.average;
+        earth.planet_surface = Planetoid.Planet_Surface.ocean;
+        earth.planet_atmosphere = Planetoid.Planet_Atmosphere.nitrogen_oxygen;
+        earth.sprite_path = "GFX/Space/Planets/Preset/earth";
+
         earth.orbit = 1f;
         earth.radius = 1f;
         earth.mass = 1f;
         earth.gravity = 1f;
-        earth.sprite_path = "GFX/Space/Planets/Preset/earth";
 
         earth.surface_temperature_min = 184; // Kelvin
         earth.surface_temperature_mean = 288; // Kelvin
@@ -60,12 +85,18 @@ public static class presets_systems
 
         Planetoid mars = new Planetoid();
         mars.name = "Mars";
-        mars.planet_class = Planetoid.Planet_Class.planet;
+        mars.planet_size = Planetoid.Planet_Size.planet;
+        mars.planet_class = Planetoid.Planet_Class.silicate;
+        mars.planet_temperature = Planetoid.Planet_Temperature.cold;
+        mars.planet_gravity = Planetoid.Planet_Gravity.low;
+        mars.planet_surface = Planetoid.Planet_Surface.barren;
+        mars.planet_atmosphere = Planetoid.Planet_Atmosphere.carbon_dioxide;
+        mars.sprite_path = "GFX/Space/Planets/Preset/mars";
+
         mars.orbit = 1.5f;
         mars.radius = 0.53f;
         mars.mass = 0.1f;
         mars.gravity = 0.38f;
-        mars.sprite_path = "GFX/Space/Planets/Preset/mars";
 
         mars.surface_temperature_min = 130; // Kelvin
         mars.surface_temperature_mean = 210; // Kelvin
@@ -75,11 +106,13 @@ public static class presets_systems
 
         Planetoid asteroid_belt = new Planetoid();
         asteroid_belt.name = "Asteroid\nBelt";
+        asteroid_belt.planet_size = Planetoid.Planet_Size.normal_belt;
         asteroid_belt.planet_class = Planetoid.Planet_Class.asteroid_belt;
         asteroid_belt.orbit = 3f;
 
         Planetoid jupiter = new Planetoid();
         jupiter.name = "Jupiter";
+        jupiter.planet_size = Planetoid.Planet_Size.giant;
         jupiter.planet_class = Planetoid.Planet_Class.gas_giant;
         jupiter.orbit = 5.2f;
         jupiter.radius = 11.2f;
@@ -94,6 +127,7 @@ public static class presets_systems
         Planetoid saturn = new Planetoid();
         saturn.name = "Saturn";
         saturn.planet_class = Planetoid.Planet_Class.gas_giant;
+        saturn.planet_size = Planetoid.Planet_Size.giant;
         saturn.orbit = 9.5f;
         saturn.radius = 9.45f;
         saturn.mass = 95.2f;
@@ -107,6 +141,7 @@ public static class presets_systems
         Planetoid uranus = new Planetoid();
         uranus.name = "Uranus";
         uranus.planet_class = Planetoid.Planet_Class.gas_giant;
+        uranus.planet_size = Planetoid.Planet_Size.giant;
         uranus.orbit = 19.2f;
         uranus.radius = 4f;
         uranus.mass = 14.5f;
@@ -120,6 +155,7 @@ public static class presets_systems
         Planetoid neptune = new Planetoid();
         neptune.name = "Neptune";
         neptune.planet_class = Planetoid.Planet_Class.gas_giant;
+        neptune.planet_size = Planetoid.Planet_Size.giant;
         neptune.orbit = 30f;
         neptune.radius = 3.89f;
         neptune.mass = 17.1f;
@@ -130,18 +166,16 @@ public static class presets_systems
         neptune.surface_temperature_max = 80; // Kelvin
         neptune.atmosphere_pressure = 0.65f; //kPa
 
-        Planetoid pluto = new Planetoid();
-        pluto.name = "Pluto";
-        pluto.planet_class = Planetoid.Planet_Class.planet;
-        pluto.orbit = 40f;
-        pluto.radius = 0.19f;
-        pluto.mass = 0.002f;
-        pluto.gravity = 2.53f;
+        Planetoid kuiper_belt = new Planetoid();
+        kuiper_belt.name = "Kuiper\nBelt";
+        kuiper_belt.planet_class = Planetoid.Planet_Class.asteroid_belt;
+        kuiper_belt.planet_size = Planetoid.Planet_Size.sparce_belt;
+        kuiper_belt.orbit = 40f;
 
-        pluto.surface_temperature_min = 33; // Kelvin
-        pluto.surface_temperature_mean = 44; // Kelvin
-        pluto.surface_temperature_max = 55; // Kelvin
-        pluto.atmosphere_pressure = 0; //kPa
+        kuiper_belt.surface_temperature_min = 33; // Kelvin
+        kuiper_belt.surface_temperature_mean = 44; // Kelvin
+        kuiper_belt.surface_temperature_max = 55; // Kelvin
+        kuiper_belt.atmosphere_pressure = 0; //kPa
 
 
         solar_system.planets.Add(mercury);
@@ -153,7 +187,7 @@ public static class presets_systems
         solar_system.planets.Add(saturn);
         solar_system.planets.Add(uranus);
         solar_system.planets.Add(neptune);
-        solar_system.planets.Add(pluto);
+        solar_system.planets.Add(kuiper_belt);
 
         return solar_system;
     }
