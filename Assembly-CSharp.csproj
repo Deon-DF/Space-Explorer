@@ -64,7 +64,8 @@
     <Compile Include="Assets\Scripts\definition_ship.cs" />
     <Compile Include="Assets\Scripts\definition_system.cs" />
     <Compile Include="Assets\Scripts\game_controller.cs" />
-    <Compile Include="Assets\Scripts\go_star_system.cs" />
+    <Compile Include="Assets\Scripts\game_gui.cs" />
+    <Compile Include="Assets\Scripts\presets_systems.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/Modding/Github/Space Explorer/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

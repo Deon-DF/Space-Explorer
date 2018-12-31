@@ -46,8 +46,10 @@ public class Star
 public class Planetoid
 {
     public string name;
-    public enum Planet_Class { planet, asteroid_belt }
+    public enum Planet_Class { planet, gas_giant, asteroid_belt }
     public Planet_Class planet_class = Planet_Class.planet;
+    public int discovery_level = 0;
+    public string sprite_path;
 
     public float orbit = 1f;
     public float surface_temperature_min = 184;
